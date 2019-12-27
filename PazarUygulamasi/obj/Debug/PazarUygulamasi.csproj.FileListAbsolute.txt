@@ -1,0 +1,11 @@
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\bin\Debug\PazarUygulamasi.exe.config
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\bin\Debug\PazarUygulamasi.exe
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\bin\Debug\PazarUygulamasi.pdb
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.csprojAssemblyReference.cache
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.LoginScreen.resources
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.Properties.Resources.resources
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.csproj.GenerateResource.cache
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.csproj.CoreCompileInputs.cache
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.exe
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.pdb
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.ManagementPage.resources
