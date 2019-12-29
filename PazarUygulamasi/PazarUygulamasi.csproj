@@ -46,10 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\LoginController\LoginController.cs" />
-    <Compile Include="Controller\ProductController\FruitController.cs" />
+    <Compile Include="Controller\MarketController\MarketController.cs" />
+    <Compile Include="Controller\ProductController\ProductController.cs" />
     <Compile Include="Controller\UserController\UserController.cs" />
     <Compile Include="DAO\DAOConnection.cs" />
     <Compile Include="DAO\DAOLogin.cs" />
+    <Compile Include="DAO\DAOMarket.cs" />
     <Compile Include="DAO\DAOUrunler.cs" />
     <Compile Include="DAO\DAOUser.cs" />
     <Compile Include="LoginScreen.cs">
@@ -64,6 +66,18 @@
     <Compile Include="ManagementPage.Designer.cs">
       <DependentUpon>ManagementPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="MusteriScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MusteriScreen.Designer.cs">
+      <DependentUpon>MusteriScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="productAddScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="productAddScreen.Designer.cs">
+      <DependentUpon>productAddScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LoginScreen.resx">
@@ -71,6 +85,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManagementPage.resx">
       <DependentUpon>ManagementPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MusteriScreen.resx">
+      <DependentUpon>MusteriScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="productAddScreen.resx">
+      <DependentUpon>productAddScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

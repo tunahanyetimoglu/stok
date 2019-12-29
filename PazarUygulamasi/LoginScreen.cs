@@ -38,7 +38,11 @@ namespace PazarUygulamasi
             {
 
                 userId = DAO.DAOUser.getUserId(textBoxUsername.Text);
-                MessageBox.Show("YETKİLİ 2 ABİ");
+                MusteriScreen musteriPage = new MusteriScreen(this);
+                this.Hide();
+                musteriPage.ShowDialog();
+                // Application.Exit();
+                this.Show();
             }
             else
             {

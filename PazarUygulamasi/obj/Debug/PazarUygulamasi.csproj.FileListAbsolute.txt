@@ -9,3 +9,5 @@ C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygul
 C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.exe
 C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.pdb
 C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.ManagementPage.resources
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.productAddScreen.resources
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.MusteriScreen.resources
