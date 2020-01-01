@@ -46,12 +46,18 @@ namespace PazarUygulamasi.DAO
         {
             return ProductController.getProductsOnMarket(id);
         }
-        public  void insertProduct(string ad, string skt, float fiyat, int adet, int kategorid)
+        public  void insertProduct(string ad, string skt, float fiyat, int adet, int kategorid, float maliyet)
         {
-            products.insertSQLProduct(ad, skt, fiyat, adet, kategorid);
-
-            // HOCAM ASLINDA NESNE GONDERICEKTIK DE YEMEDİ!
-
+            products.insertSQLProduct(ad, skt, maliyet,fiyat, kategorid);
+            products.insertSQLMarketProduct(ad, adet);
+            
+        }
+        public static void updateMagazaStok(List<string> productList , List<int> adetList)
+        {
+            for (int i = 0; i < productList.Count; i++)
+            {
+                ProductController.updateMagazaUrun(productList[i],adetList[i]);
+            }
         }
     }
 }

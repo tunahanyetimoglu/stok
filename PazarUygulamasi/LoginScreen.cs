@@ -50,5 +50,13 @@ namespace PazarUygulamasi
                 MessageBox.Show("SEN HAYIDIR ABİİ");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegisterForm rf = new RegisterForm();
+            this.Hide();
+            rf.ShowDialog();
+            this.Show();
+        }
     }
 }

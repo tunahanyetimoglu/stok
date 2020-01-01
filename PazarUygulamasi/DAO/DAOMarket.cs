@@ -32,23 +32,29 @@ namespace PazarUygulamasi.DAO
             marketNetKazanc = marketData.getMarketNetKazanc();
             marketId2 = marketId;
         }
-
+        public static void insertMagazaCiro(List<string> productList, List<int> adetList, List<float> priceList, int userId)
+        {
+            for (int i = 0; i < productList.Count; i++)
+            {
+                MarketController.inserMagazaCiro(productList[i], adetList[i],priceList[i],userId);
+            }
+        }
         public static DataTable listSearchByUrun(String urunAd)
         {
 
-            return MarketController.getSQLSearchByUrun(urunAd,marketId2);
+            return MarketController.getSQLSearchByUrun(urunAd,1);
         }
 
         public static DataTable listSearchByMusteri(String musteriAd)
         {
 
-            return MarketController.getSQLSearchByMusteri(musteriAd, marketId2);
+            return MarketController.getSQLSearchByMusteri(musteriAd, 1);
         }
 
         public static DataTable listSearchByUrunAdet(int min,int max)
         {
 
-            return MarketController.getSQLSearchByUrunAdet(min,max, marketId2);
+            return MarketController.getSQLSearchByUrunAdet(min,max, 1);
         }
 
     }

@@ -11,3 +11,4 @@ C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygul
 C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.ManagementPage.resources
 C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.productAddScreen.resources
 C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.MusteriScreen.resources
+C:\Users\tunah\source\repos\PazarUygulamasi\PazarUygulamasi\obj\Debug\PazarUygulamasi.RegisterForm.resources

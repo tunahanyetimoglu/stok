@@ -26,6 +26,7 @@ namespace PazarUygulamasi.Controller.MarketController
 
         public int getMarketId()
         {
+            marketId = 1;
             return marketId;
         }
         public void setMarketId(int marketId)
@@ -48,7 +49,96 @@ namespace PazarUygulamasi.Controller.MarketController
         {
             this.marketTelefon = marketTelefon;
         }
+        private static int getUrunId(string ad)
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT urunId FROM tb_Urun where urunAd=@urun", connection);
+                selectCommand.Parameters.Clear();
+                selectCommand.Parameters.AddWithValue("@urun", ad);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                reader.Read();
 
+                return Convert.ToInt32(reader[0].ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Başarısız giriş denemesi.");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+
+            return 0;
+        }
+
+        private static float getUrunPrice(string ad)
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT urunMaliyet FROM tb_Urun where urunAd=@urun", connection);
+                selectCommand.Parameters.Clear();
+                selectCommand.Parameters.AddWithValue("@urun", ad);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                reader.Read();
+
+                return float.Parse(reader[0].ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Başarısız giriş denemesi.");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+
+            return 0;
+        }
+
+        public static void inserMagazaCiro(string product, int adet , float price, int userId) 
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+
+            int urunId = getUrunId(product);
+            float urunMaliyet = getUrunPrice(product) * adet;
+            float kar = price - urunMaliyet;
+
+            Console.WriteLine("maliyet : " + urunMaliyet);
+
+            Console.WriteLine("kar : " + kar);
+
+            Console.WriteLine("urunId : " + urunId);
+
+            Console.WriteLine("userId : " + userId);
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_INSERT_CARIHESAP", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@satilanAdet", SqlDbType.VarChar).Value = adet;
+                cmd.Parameters.Add("@urunId", SqlDbType.VarChar).Value = urunId;
+                cmd.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
+                cmd.Parameters.Add("@toplamFiyat", SqlDbType.VarChar).Value = price;
+                cmd.Parameters.Add("@toplamMaliyet", SqlDbType.VarChar).Value = urunMaliyet;
+                cmd.Parameters.Add("@marketId", SqlDbType.VarChar).Value = 1;
+                cmd.Parameters.Add("@toplamKar", SqlDbType.VarChar).Value = kar;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("MagazaCiro Başarıyla güncellendi");
+            }
+            catch
+            {
+                MessageBox.Show("MagazaCiro Güncellenirken Hata Oluştu");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+        }
         public void setMarketCiroList(DataTable marketCiroList)
         {
             this.marketCiroList = marketCiroList;
@@ -76,7 +166,7 @@ namespace PazarUygulamasi.Controller.MarketController
             {         
                 SqlCommand command = new SqlCommand("SP_SELECT_MARKET", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@yonetici", SqlDbType.VarChar).Value = id;
+                command.Parameters.Add("@yonetici", SqlDbType.VarChar).Value = 1;
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 setMarketId(Convert.ToInt32(reader[0].ToString()));

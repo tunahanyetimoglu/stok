@@ -16,6 +16,7 @@ namespace PazarUygulamasi
         string ad;
         string skt;
         float fiyat;
+        float maliyet;
         int adet;
         int kategorid;
 
@@ -29,7 +30,8 @@ namespace PazarUygulamasi
         private void buttonEKLE_Click(object sender, EventArgs e)
         {
             refreshVariables();
-            products.insertProduct(ad, skt, fiyat, adet, kategorid);
+
+            products.insertProduct(ad, skt, fiyat, adet, kategorid, maliyet);
             this.Hide();
         }
 
@@ -39,6 +41,7 @@ namespace PazarUygulamasi
             skt = textBoxSKT.Text;
             fiyat = float.Parse(textBoxFiyat.Text);
             adet = Convert.ToInt32(textBoxAdet.Text);
+            maliyet = float.Parse(textBoxMaliyet.Text);
             kategorid = Convert.ToInt32(comboBoxKategori.SelectedIndex + 1);
 
         }

@@ -34,6 +34,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,12 +109,27 @@
             this.textBoxUsername.Size = new System.Drawing.Size(201, 44);
             this.textBoxUsername.TabIndex = 5;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button1.Location = new System.Drawing.Point(503, 450);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 67);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Register";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(638, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "LoginScreen";
@@ -133,6 +149,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Button button1;
     }
 }
 

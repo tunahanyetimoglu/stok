@@ -72,6 +72,11 @@
             this.tabPageSebze = new System.Windows.Forms.TabPage();
             this.dataGridViewSebze = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -101,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMeyve)).BeginInit();
             this.tabPageSebze.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSebze)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -110,6 +116,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(297, 316);
             this.listBox1.TabIndex = 5;
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // label1
             // 
@@ -125,7 +132,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(190, 64);
+            this.panel1.Location = new System.Drawing.Point(2, 67);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(581, 428);
             this.panel1.TabIndex = 7;
@@ -259,6 +266,7 @@
             this.buttonTemizlik.TabIndex = 4;
             this.buttonTemizlik.Text = "Temizlik";
             this.buttonTemizlik.UseVisualStyleBackColor = true;
+            this.buttonTemizlik.Click += new System.EventHandler(this.buttonTemizlik_Click);
             // 
             // buttonIcecek
             // 
@@ -268,6 +276,7 @@
             this.buttonIcecek.TabIndex = 3;
             this.buttonIcecek.Text = "İçecek";
             this.buttonIcecek.UseVisualStyleBackColor = true;
+            this.buttonIcecek.Click += new System.EventHandler(this.buttonIcecek_Click);
             // 
             // buttonAburCubur
             // 
@@ -277,6 +286,7 @@
             this.buttonAburCubur.TabIndex = 2;
             this.buttonAburCubur.Text = "Gıda - Şekerleme";
             this.buttonAburCubur.UseVisualStyleBackColor = true;
+            this.buttonAburCubur.Click += new System.EventHandler(this.buttonAburCubur_Click);
             // 
             // buttonSutKahvalti
             // 
@@ -286,6 +296,7 @@
             this.buttonSutKahvalti.TabIndex = 1;
             this.buttonSutKahvalti.Text = "Süt - Kahvaltılık";
             this.buttonSutKahvalti.UseVisualStyleBackColor = true;
+            this.buttonSutKahvalti.Click += new System.EventHandler(this.buttonSutKahvalti_Click);
             // 
             // buttonMeyveSebze
             // 
@@ -295,6 +306,7 @@
             this.buttonMeyveSebze.TabIndex = 0;
             this.buttonMeyveSebze.Text = "Meyve - Sebze";
             this.buttonMeyveSebze.UseVisualStyleBackColor = true;
+            this.buttonMeyveSebze.Click += new System.EventHandler(this.buttonMeyveSebze_Click);
             // 
             // panelMeyve
             // 
@@ -378,6 +390,7 @@
             this.dataGridViewTemizlik.Name = "dataGridViewTemizlik";
             this.dataGridViewTemizlik.Size = new System.Drawing.Size(437, 277);
             this.dataGridViewTemizlik.TabIndex = 0;
+            this.dataGridViewTemizlik.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTemizlik_CellClick);
             // 
             // tabControl3
             // 
@@ -408,6 +421,7 @@
             this.dataGridViewIcecek.Name = "dataGridViewIcecek";
             this.dataGridViewIcecek.Size = new System.Drawing.Size(437, 277);
             this.dataGridViewIcecek.TabIndex = 0;
+            this.dataGridViewIcecek.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewIcecek_CellClick);
             // 
             // tabControl2
             // 
@@ -439,6 +453,7 @@
             this.dataGridViewGida.Name = "dataGridViewGida";
             this.dataGridViewGida.Size = new System.Drawing.Size(437, 277);
             this.dataGridViewGida.TabIndex = 0;
+            this.dataGridViewGida.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGida_CellClick);
             // 
             // tabPageSekerleme
             // 
@@ -459,6 +474,7 @@
             this.dataGridViewSugar.Name = "dataGridViewSugar";
             this.dataGridViewSugar.Size = new System.Drawing.Size(437, 277);
             this.dataGridViewSugar.TabIndex = 0;
+            this.dataGridViewSugar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSugar_CellClick);
             // 
             // tabControl1
             // 
@@ -489,6 +505,7 @@
             this.dataGridViewMilk.Name = "dataGridViewMilk";
             this.dataGridViewMilk.Size = new System.Drawing.Size(437, 277);
             this.dataGridViewMilk.TabIndex = 0;
+            this.dataGridViewMilk.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMilk_CellClick);
             // 
             // tabControlMeyveSebze
             // 
@@ -520,7 +537,7 @@
             this.dataGridViewMeyve.Name = "dataGridViewMeyve";
             this.dataGridViewMeyve.Size = new System.Drawing.Size(437, 277);
             this.dataGridViewMeyve.TabIndex = 0;
-            this.dataGridViewMeyve.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMeyve_CellDoubleClick);
+            this.dataGridViewMeyve.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMeyve_CellClick);
             // 
             // tabPageSebze
             // 
@@ -540,21 +557,83 @@
             this.dataGridViewSebze.Name = "dataGridViewSebze";
             this.dataGridViewSebze.Size = new System.Drawing.Size(440, 282);
             this.dataGridViewSebze.TabIndex = 0;
+            this.dataGridViewSebze.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSebze_CellClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1080, 275);
+            this.button1.Location = new System.Drawing.Point(640, 323);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 82);
             this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
+            this.button1.Text = "Ekle";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(624, 297);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 9;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(648, 281);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Adet / Kilo";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1092, 428);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Toplam Fiyat ";
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelPrice.Location = new System.Drawing.Point(1116, 444);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(21, 24);
+            this.labelPrice.TabIndex = 12;
+            this.labelPrice.Text = "0";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1087, 323);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 82);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "SERİ SİPARİŞ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // MusteriScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 494);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.labelPrice);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -595,6 +674,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMeyve)).EndInit();
             this.tabPageSebze.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSebze)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -645,5 +725,10 @@
         private System.Windows.Forms.TabPage tabPageSebze;
         private System.Windows.Forms.DataGridView dataGridViewSebze;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Button button2;
     }
 }

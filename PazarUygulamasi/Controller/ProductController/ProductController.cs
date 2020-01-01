@@ -144,7 +144,7 @@ namespace PazarUygulamasi.Controller.ProductController
             return dataTable;
         }
 
-        public  void insertSQLProduct(string ad, string skt, float fiyat, int adet, int kategorid)
+        public  void insertSQLProduct(string ad, string skt, float fiyat, float maliyet, int kategorid)
         {
             SqlConnection connection = DAO.DAOConnection.connectionOpen();
             try
@@ -154,7 +154,7 @@ namespace PazarUygulamasi.Controller.ProductController
                 cmd.Parameters.Add("@urunAd", SqlDbType.VarChar).Value = ad;
                 cmd.Parameters.Add("@urunSKT", SqlDbType.VarChar).Value = skt;
                 cmd.Parameters.Add("@urunFiyat", SqlDbType.VarChar).Value = fiyat;
-                cmd.Parameters.Add("@urunAdetKilo", SqlDbType.VarChar).Value = adet;
+                cmd.Parameters.Add("@urunMaliyet", SqlDbType.VarChar).Value = maliyet;
                 cmd.Parameters.Add("@urunKategoriId", SqlDbType.VarChar).Value = kategorid;
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Ürün Başarıyla Eklendi");
@@ -162,6 +162,79 @@ namespace PazarUygulamasi.Controller.ProductController
             catch
             {
                 MessageBox.Show("Ürün Eklenirken Hata Oluştu");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+        }
+        public void insertSQLMarketProduct(string ad,  int adet)
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            int id = getUrunId(ad);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_INSERT_MARKETPRODUCT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@urunId", SqlDbType.VarChar).Value = id;
+                cmd.Parameters.Add("@stok", SqlDbType.VarChar).Value = adet;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Ürün Başarıyla Eklendi");
+            }
+            catch
+            {
+                MessageBox.Show("Ürün Eklenirken Hata Oluştu");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+        }
+        private  static int getUrunId (string ad)
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT urunId FROM tb_Urun where urunAd=@urun", connection);
+                selectCommand.Parameters.Clear();
+                selectCommand.Parameters.AddWithValue("@urun", ad);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                reader.Read();
+
+                return Convert.ToInt32(reader[0].ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Başarısız giriş denemesi.");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+
+            return 0;
+        }
+    
+
+        public static void  updateMagazaUrun(String urun, int adet)
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+
+            int urunId = getUrunId(urun);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_UPDATE_MAGAZASTOK", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@siparis", SqlDbType.VarChar).Value = adet;
+                cmd.Parameters.Add("@urunId", SqlDbType.VarChar).Value = urunId;
+                cmd.Parameters.Add("@marketId", SqlDbType.VarChar).Value = 1;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Stok Başarıyla güncellendi");
+            }
+            catch
+            {
+                MessageBox.Show("Stok Güncellenirken Hata Oluştu");
             }
             finally
             {

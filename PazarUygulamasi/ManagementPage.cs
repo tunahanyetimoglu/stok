@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace PazarUygulamasi
         DAOUrunler products;
         DAOMarket market;
 
+        int scr_val , page;
+        DataTable list;
+
+        SqlDataAdapter da;
+
         private List<int> urunIds;
 
         public ManagementPage(Form callingForm)
@@ -31,6 +37,7 @@ namespace PazarUygulamasi
             labelEmail.Text = DAO.DAOUser.getUserEmail(userId);
             listAllDataTables();
             listMarketInformation();
+            listMarketInformation2();
 
             urunIds = new List<int>();
             DataTable dtt = DAOUrunler.listProductsOnMarket(market.marketId);
@@ -59,6 +66,41 @@ namespace PazarUygulamasi
             labelMarketAd.Text = market.marketAd;
             labelKar.Text = market.marketNetKazanc.ToString();
             dataGridViewCiro.DataSource = market.marketCiroList;
+
+            page = Convert.ToInt32(dataGridViewCiro.Rows.Count);
+
+        }
+
+        private void listMarketInformation2()
+        {
+
+            String sql = " Select tb_Market.marketAd as Market, tb_User_Detail.Name as İsim, tb_User_Detail.Surname as Soyisim, tb_Urun.urunAd as Ürün, " +
+                " tb_CariHesap.satilanAdet as SatılanAdet, tb_CariHesap.toplamFiyat as AlınanÜcret, tb_CariHesap.toplamMaliyet as Maliyet " +
+                "from tb_CariHesap " +
+                "inner join tb_Market on tb_CariHesap.marketId = tb_Market.marketId " +
+                "inner join tb_User_Detail on tb_CariHesap.userId = tb_User_Detail.userId " +
+                "inner join tb_Urun on tb_CariHesap.urunId = tb_Urun.urunId where tb_Market.marketId = 1";
+
+            list = new DataTable();
+            SqlConnection connection = DAOConnection.connectionOpen();
+            SqlCommand command = new SqlCommand(sql, connection);
+            da = new SqlDataAdapter(command);
+            try
+            {
+                da.Fill(list);
+            dataGridViewCiro.DataSource = list;
+            page = Convert.ToInt32(dataGridViewCiro.Rows.Count);
+            }
+            catch
+            {
+                MessageBox.Show("CİRO LİSTESİ HATALI!");
+            }
+            finally
+            {
+                DAOConnection.connectionClose(connection);
+            }
+
+
         }
         private void ManagementPage_Load(object sender, EventArgs e)
         {
@@ -193,7 +235,7 @@ namespace PazarUygulamasi
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            dataGridViewCiro.DataSource = market.marketCiroList;
+            listMarketInformation2();
         }
 
         private void dataGridViewTemizlik_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -204,6 +246,29 @@ namespace PazarUygulamasi
         private void buttonDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            scr_val = scr_val - 5;
+            if (scr_val <= 0)
+            {
+                scr_val = 0;
+            }
+            list.Clear();
+            da.Fill(scr_val, 5, list);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            scr_val = scr_val + 5;
+            if (scr_val > page)
+            {
+                scr_val = 10;
+            }
+            list.Clear();
+            da.Fill(scr_val, 5, list);
         }
     }
 }

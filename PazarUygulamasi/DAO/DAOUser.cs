@@ -31,5 +31,13 @@ namespace PazarUygulamasi.DAO
             UserController user = new UserController(id);
             return user.getUserEmail();
         }
+        public static void insertlogin(String email)
+        {
+            UserController.insertLoginSQL(email);
+        }
+        public static void insertUser(String ad,String soyad,String gsm, String yas, String adress, String email)
+        {
+            UserController.insertUserSQL(email, ad, soyad,  yas,  adress, gsm);
+        }
     }
 }

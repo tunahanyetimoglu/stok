@@ -39,6 +39,8 @@
             this.textBoxAdet = new System.Windows.Forms.TextBox();
             this.textBoxSKT = new System.Windows.Forms.TextBox();
             this.buttonEKLE = new System.Windows.Forms.Button();
+            this.textBoxMaliyet = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxKategori
@@ -52,7 +54,7 @@
             "Şekerleme",
             "İçecek",
             "Temizlik"});
-            this.comboBoxKategori.Location = new System.Drawing.Point(137, 165);
+            this.comboBoxKategori.Location = new System.Drawing.Point(137, 193);
             this.comboBoxKategori.Name = "comboBoxKategori";
             this.comboBoxKategori.Size = new System.Drawing.Size(220, 21);
             this.comboBoxKategori.TabIndex = 0;
@@ -60,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 173);
+            this.label1.Location = new System.Drawing.Point(20, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 1;
@@ -132,7 +134,7 @@
             // 
             // buttonEKLE
             // 
-            this.buttonEKLE.Location = new System.Drawing.Point(23, 212);
+            this.buttonEKLE.Location = new System.Drawing.Point(23, 284);
             this.buttonEKLE.Name = "buttonEKLE";
             this.buttonEKLE.Size = new System.Drawing.Size(334, 40);
             this.buttonEKLE.TabIndex = 10;
@@ -140,11 +142,29 @@
             this.buttonEKLE.UseVisualStyleBackColor = true;
             this.buttonEKLE.Click += new System.EventHandler(this.buttonEKLE_Click);
             // 
+            // textBoxMaliyet
+            // 
+            this.textBoxMaliyet.Location = new System.Drawing.Point(140, 158);
+            this.textBoxMaliyet.Name = "textBoxMaliyet";
+            this.textBoxMaliyet.Size = new System.Drawing.Size(220, 20);
+            this.textBoxMaliyet.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Ürün Maliyet";
+            // 
             // productAddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 264);
+            this.ClientSize = new System.Drawing.Size(382, 336);
+            this.Controls.Add(this.textBoxMaliyet);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.buttonEKLE);
             this.Controls.Add(this.textBoxSKT);
             this.Controls.Add(this.textBoxAdet);
@@ -180,5 +200,7 @@
         private System.Windows.Forms.TextBox textBoxAdet;
         private System.Windows.Forms.TextBox textBoxSKT;
         private System.Windows.Forms.Button buttonEKLE;
+        private System.Windows.Forms.TextBox textBoxMaliyet;
+        private System.Windows.Forms.Label label6;
     }
 }

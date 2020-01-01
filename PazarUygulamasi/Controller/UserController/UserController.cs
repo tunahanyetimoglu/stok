@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -153,13 +154,88 @@ namespace PazarUygulamasi.Controller.UserController
             }
             catch
             {
-                MessageBox.Show("Kullanıcı SoyAdi Bulunamadı.");
+                MessageBox.Show("Kullanıcı email Bulunamadı.");
             }
             finally
             {
                 DAO.DAOConnection.connectionClose(connection);
             }
             return userEmail;
+        }
+
+        public static void insertLoginSQL(string email)
+        {
+
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            try
+            {
+                SqlCommand command = new SqlCommand("SP_INSERT_REGISTER", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@userEmail", SqlDbType.VarChar).Value = email;
+                command.ExecuteReader();
+
+            }
+            catch
+            {
+                MessageBox.Show("Login Verisi Oluşturulurken Hata Oluştu");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+
+        }
+        public static int getUserId(String email)
+        {
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            int id = 0;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT userId FROM tb_User where userEmail=@email", connection);
+                selectCommand.Parameters.Clear();
+                selectCommand.Parameters.AddWithValue("@email", email);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                reader.Read();
+                id = Convert.ToInt32(reader[0].ToString());
+                return id;
+            }
+            catch
+            {
+                MessageBox.Show("Kullanıcı ID Bulunamadı.");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+            return id;
+        }
+        public static void insertUserSQL(string email,string name,string surname,string age, string adress, string gsm)
+        {
+
+            SqlConnection connection = DAO.DAOConnection.connectionOpen();
+            int id= getUserId(email);
+            try
+            {
+                SqlCommand command = new SqlCommand("SP_INSERT_USER", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@userName", SqlDbType.VarChar).Value = name;
+                command.Parameters.Add("@Surname", SqlDbType.VarChar).Value = surname;
+                command.Parameters.Add("@age", SqlDbType.VarChar).Value = age;
+                command.Parameters.Add("@adress", SqlDbType.VarChar).Value = adress;
+                command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = gsm;
+                command.Parameters.Add("@userId", SqlDbType.VarChar).Value = id;
+                command.ExecuteReader();
+
+            }
+            catch
+            {
+                MessageBox.Show("Kullanıcı Kayıtı sırasında Hata Oluştu");
+            }
+            finally
+            {
+                DAO.DAOConnection.connectionClose(connection);
+            }
+
         }
     }
 }
